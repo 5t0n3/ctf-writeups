@@ -3,7 +3,7 @@
 ## Challenge description
 
 > One time pads are a way of encrypting a message in a way that cannot be cracked. I have developed the Super One Time Pad to increase its security!
-Good Luck trying to find the flag!
+> Good Luck trying to find the flag!
 
 ## Solution
 

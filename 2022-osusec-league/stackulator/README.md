@@ -125,9 +125,9 @@ code_r0x00101396:
 
 [Huh, I wonder what that youtube link is?](https://www.youtube.com/watch?v=dQw4w9WgXcQ) ;)
 
-Jokes aside though, reading the log contents sounds interesting since it reads a file. I initially assumed that we had to read the `calc.log` file* but a) its only contents are `1 + 2 = 3` and b) we were told that the flag was actually located in the file `flag`. Based on the debug menu prompt, we'll have to input a 2 to get the log file to print. The path of the file that's read is passed as `param_1`, so we'll have to figure out how to change the path that's passed.
+Jokes aside though, reading the log contents sounds interesting since it reads a file. I initially assumed that we had to read the `calc.log` file\* but a) its only contents are `1 + 2 = 3` and b) we were told that the flag was actually located in the file `flag`. Based on the debug menu prompt, we'll have to input a 2 to get the log file to print. The path of the file that's read is passed as `param_1`, so we'll have to figure out how to change the path that's passed.
 
-*If you're wondering where I got `calc.log`, in the `main()` function `local_44` is assigned to the hex number `0x6c2e636c61632f2e`, which is actually the string `l.clac/.` (it's reversed due to how numbers are represented in memory; if you're curious, you can read about [endianness](https://chortle.ccsu.edu/assemblytutorial/Chapter-15/ass15_3.html)). I just assumed the `.log` file extension because that's what's normally used for logs :)
+\*If you're wondering where I got `calc.log`, in the `main()` function `local_44` is assigned to the hex number `0x6c2e636c61632f2e`, which is actually the string `l.clac/.` (it's reversed due to how numbers are represented in memory; if you're curious, you can read about [endianness](https://chortle.ccsu.edu/assemblytutorial/Chapter-15/ass15_3.html)). I just assumed the `.log` file extension because that's what's normally used for logs :)
 
 ### Messing with memory
 
