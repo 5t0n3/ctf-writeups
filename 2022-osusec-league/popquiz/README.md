@@ -1,4 +1,4 @@
-# Popquiz
+# popquiz
 
 ## Challenge description
 

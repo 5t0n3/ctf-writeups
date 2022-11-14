@@ -1,4 +1,4 @@
-# Flagtastic Falafel
+# flagtastic_falafel
 
 ## Challenge Description
 

@@ -1,4 +1,4 @@
-# Super OTP
+# super_otp
 
 ## Challenge description
 

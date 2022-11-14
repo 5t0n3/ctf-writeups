@@ -1,4 +1,6 @@
-# Challenge description
+# stackulator
+
+## Challenge description
 
 > I heard calculators are a neat project so I made one for one of my classes. It is super secure and definitely bug free. Take a look and let me know what you think! I'm overflowing with excitement to hear how it stacks up against other calculators.
 
