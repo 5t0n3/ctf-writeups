@@ -5,6 +5,7 @@
 > NOTE: the flag you will receive is in the format of `flag{...}`. Manually change this to `idek{...}` when submitting
 
 Provided files: [cleithrophobia.tar](./cleithrophobia.tar)
+
 Solve script: [pwn_onion.py](./pwn_onion.py)
 
 ## Solution
