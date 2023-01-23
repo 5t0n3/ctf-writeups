@@ -125,7 +125,7 @@ Luckily that happens if we prepend another null block to our plaintext! If we fo
 C_2 &= \text{Dec}(0 \oplus \text{Enc}(0)) \oplus 0 \oplus \text{Enc}(B) \\
 &= \text{Dec}(\text{Enc}(0)) \oplus \text{Enc}(B) \\
 &= 0 \oplus \text{Enc}(B) \\
-&= \text{Enc}(B) \\
+&= \text{Enc}(B)
 \end{align*}
 ```
 
