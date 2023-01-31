@@ -156,7 +156,7 @@ Hmm...maybe we can open it up in ~~LibreOffice~~ Word again?
 <img src="img/behindthecurtain.png" alt="First page of BehindTheCurtain.xml">
 </div>
 
-Huh weird, I didn't know Word had it's own XML format.
+Huh weird, I didn't know Word had its own XML format.
 Also did I mention this document has 300 pages?
 There's no way I'm sifting through that manually :)
 
