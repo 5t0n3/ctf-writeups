@@ -175,7 +175,7 @@ I saw that the author of the challenge used [`numpy`](https://numpy.org/) with t
 Before we recover $O$, though, we do need to figure out the structure of the signature we receive.
 This is the last chunk of the `ov_sign` function in `src/ov.c` that's used to sign messages:
 
-```
+```c
 int ov_sign( uint8_t * signature , const sk_t * sk , const uint8_t * message , unsigned mlen )
 {
     // lots of snip
@@ -206,7 +206,7 @@ Based on crossreferencing that with the figure from above, it looks like the res
 but that's not quite correct. The `ov_sign` function is called from the `crypto_sign` function, and it's the latter that's called directly from vinaigrette.py.
 Let's check it out as well (this time it's located in `src/sign.c`):
 
-```
+```c
 int
 #if defined(PQM4)
 crypto_sign(unsigned char *sm, size_t *smlen, const unsigned char *m, size_t mlen, const unsigned char *sk)
