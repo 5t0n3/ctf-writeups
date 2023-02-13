@@ -19,7 +19,7 @@ I got caught on the xoring for a while, but figured out pretty quickly that if y
 The problem with xoring, though, is that its effect depends on the random letters in the first fake flag which we don't know.
 We do know that all of those letters are lowercase, though, and based on [this ASCII table](https://www.binaryhexconverter.com/binary-ascii-characters-table) all lowercase letters have the 32 bit as a 1 in their binary representation.
 This means that subtracting 32 as is done in `stov` will effectively just set that bit to zero.
-If we can find a character that gets converted to 32 in `stov`, it will then allow us to affect all of the letters inside the `lactf{...}` wrapper in the same way, allowing us to glean information about the $\mathbf{A}` matrix.
+If we can find a character that gets converted to 32 in `stov`, it will then allow us to affect all of the letters inside the `lactf{...}` wrapper in the same way, allowing us to glean information about the $\mathbf{A}$ matrix.
 Such a character would need an ASCII codepoint of 64, which as it turns out is the `@` symbol.
 All lowercase letters also have the 64 bit as a 1 in their ASCII codepoints, meaning that the character with codepoint 64 + 32 = 96 (`` ` ``) will similarly affect all of the flag letters in the same way.
 
