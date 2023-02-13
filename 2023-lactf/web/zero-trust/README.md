@@ -61,7 +61,7 @@ Let's see what that looks like for GCM, since that's what we're dealing with in 
 </div>
 
 Yep, definitely a stream cipher :)
-Normally this wouldn't be useful information because xoring is really hard to invert, but this isn't normaly crypto.
+Normally this wouldn't be useful information because xoring is really hard to invert, but this isn't normal crypto.
 Based on the `makeAuth` function, we actually know part of the plaintext that's encrypted with AES-256-GCM:
 
 ```javascript
