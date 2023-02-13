@@ -101,15 +101,15 @@ We can then encrypt an arbitrary 20-character flag (like the second fake flag we
 ```math
 \text{Enc}'(\mathbf{v}) = \mathbf{o} + \mathbf{A}'
 \begin{pmatrix}
-v_7 \\
-v_8 \\
-v_9 \\
+|v_7| - 32 \\
+|v_8| - 32 \\
+|v_9| - 32 \\
 ... \\
-v_{19}
+|v_{19}| - 32
 \end{pmatrix}
 ```
 
-Where $v_7...v_{19}$ are the lowercase letters inside the `lactf{...}` wrapper.
+Where $v_7...v_{19}$ are the lowercase letters inside the `lactf{...}` wrapper, and again $|v_i|$ is the ASCII codepoint of the ith character of $\mathbf{v}$.
 
 With that knowledge in hand, we can finally get the real flag!
 
