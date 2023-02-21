@@ -221,7 +221,7 @@ We also know the 8 bytes that the PNG has to start with in order to be a real PN
 If we xor those bytes with the corresponding bytes of the encrypted flag.png, we'll get the first few outputs from the random number generator.
 We can then just iterate over the timestamps before 1676086400, since this program refuses to execute beyond that point.
 
-This definitely isn't the best way to do all of that, but this is [the Python script]( I used that gave me the correct timestamp :)
+This definitely isn't the best way to do all of that, but this is [the Python script](bruteforce-timestamp.py) I used that gave me the correct timestamp :)
 
 ```python
 import random
@@ -254,7 +254,8 @@ We can then plug that in for the random number generator seed in the encryption 
 <img src="flag-decrypted.png" alt="Decrypted flag.png with flag text at the bottom">
 </div>
 
-And there's our flag: `osu{7u6b0475_4r3_50_c00l}`!
+And there's our flag at the bottom: `osu{7u6b0475_4r3_50_c00l}`!
+(You might have trouble seeing it if you're using a dark theme ;))
 
 To review what it took to get that, we had to:
 
