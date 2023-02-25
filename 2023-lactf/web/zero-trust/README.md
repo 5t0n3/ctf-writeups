@@ -99,7 +99,7 @@ While we don't know the random path (it is random after all), luckily for us we 
 ```
 
 With that in mind, we can then modify our auth cookie to instead point to `/flag.txt`!
-All we need to do is xor the ciphertext (i.e. the third component) with `{"tmpfile":"/tmp/pastestore/"` to recover the portion of the keystream we need, and then xor *that* with `{"tmpfile":"/flag.txt"}` to get a valid cookie pointing to the flag file.
+All we need to do is xor the ciphertext (i.e. the third component) with `{"tmpfile":"/tmp/pastestore"` to recover the portion of the keystream we need, and then xor *that* with `{"tmpfile":"/flag.txt"}` to get a valid cookie pointing to the flag file.
 Because GCM turns AES into a stream cipher, we don't have to worry about padding or anything; we can just truncate off the rest of the original ciphertext since we don't need it (or know it haha).
 
 I wrote up [a quick Python script](forge.py) to automate the cookie tampering process:
