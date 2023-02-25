@@ -19,12 +19,6 @@ A mysterious figure offers you 10 attempts at decoding the stone:
 Enter your guess: A
 Your guess must be exactly 40 characters.
 
-On the hill lies a stone. It reads:
-H(Qi!kKBM{ BbEt3s/2]
-)na\|YO4hNb7fXO>QVC]
-
-A mysterious figure offers you 10 attempts at decoding the stone:
-
 Enter your guess: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 Incorrect:
 KYjcZ80[RxHeG8i[1wm=
