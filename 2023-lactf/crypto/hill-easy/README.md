@@ -100,12 +100,12 @@ I'll go over two ways to do this: the cursed way I used initially and the one I 
 
 ### The cursed way
 
-Because we're given 10 queries to encrypt the two halves of whatever string/vector we send in, we effectively have 20 encryption oracle queries, which just so happens to be the number of rows/columns in the $\mathbf{A}$ matrix.
-Having just come from doing [crypto/vinaigrette](../../../2023-dicectf/vinaigrette) at DiceCTF last week, basically my first thought when solving this challenge was setting up a matrix equation of the form $\mathbf{A}\mathbf{X} = \mathbf{C}$, where $\mathbf{X}$ is a matrix containing random queries we send to the oracle as column vectors and $\mathbf{C}$ is the same but for the corresponding encrypted vectors.
-Assuming our $\mathbf{X}$ matrix is invertible, it follows then that $\mathbf{A} = \mathbf{C}\mathbf{X}^{-1}$.
-This directly gives us the $\mathbf{A}$ matrix which we can then use to encrypt arbitrary vectors, like the second fake flag we're given.
+Because we're given 10 queries to encrypt the two halves of whatever string/vector we send in, we effectively have 20 encryption oracle queries, which just so happens to be the number of rows/columns in the $\\mathbf{A}$ matrix.
+Having just come from doing [crypto/vinaigrette](../../../2023-dicectf/vinaigrette) at DiceCTF last week, basically my first thought when solving this challenge was setting up a matrix equation of the form $\\mathbf{A}\\mathbf{X} = \\mathbf{C}$, where $\\mathbf{X}$ is a matrix containing random queries we send to the oracle as column vectors and $\\mathbf{C}$ is the same but for the corresponding encrypted vectors.
+Assuming our $\\mathbf{X}$ matrix is invertible, it follows then that $\\mathbf{A} = \\mathbf{C}\\mathbf{X}^{-1}$.
+This directly gives us the $\\mathbf{A}$ matrix which we can then use to encrypt arbitrary vectors, like the second fake flag we're given.
 
-This method of recovering $\mathbf{A}$ is implemented in [`cursed_rock.sage`](cursed_rock.sage) if you want to check it out, and it does indeed give us the right flag:
+This method of recovering $\\mathbf{A}$ is implemented in [`cursed_rock.sage`](cursed_rock.sage) if you want to check it out, and it does indeed give us the right flag:
 
 ```shell
 $ sage cursed_rock.sage
@@ -115,7 +115,7 @@ The text on the stone begins to rearrange itself into another message:
 lactf{tHeY_SaiD_l!NaLg_wOuLD_bE_fUN_115}
 ```
 
-I guess this way isn't actually that cursed, but there is another way to recover the $\mathbf{A}$ matrix without requiring matrix invertibility :)
+I guess this way isn't actually that cursed, but there is another way to recover the $\\mathbf{A}$ matrix without requiring matrix invertibility :)
 
 ### The easy way
 
@@ -138,9 +138,9 @@ As it turns out, the ASCII codepoint of the space character is exactly 32:
 ```
 
 This means that spaces get mapped to zeros in the `stov` function.
-This is actually really convenient since it means we can effectively zero out columns of the $\mathbf{A}$ matrix during multiplication, allowing us to focus in on specific columns.
-If we send in vectors of the form (1 0 0 ... 0 0)ᵀ, (0 1 0 ... 0 0)ᵀ, and so on, the results of the encryption/matrix multiplication process will just be the individual columns of $\mathbf{A}$, so when using this method we don't have to do any postprocessing of the responses we receive from the oracle except stick them into a matrix.
-In order to get 1s in the resulting vectors, we have to send in exclamation points in the positions corresponding to the columns of $\mathbf{A}$ we want to recover:
+This is actually really convenient since it means we can effectively zero out columns of the $\\mathbf{A}$ matrix during multiplication, allowing us to focus in on specific columns.
+If we send in vectors of the form (1 0 0 ... 0 0)ᵀ, (0 1 0 ... 0 0)ᵀ, and so on, the results of the encryption/matrix multiplication process will just be the individual columns of $\\mathbf{A}$, so when using this method we don't have to do any postprocessing of the responses we receive from the oracle except stick them into a matrix.
+In order to get 1s in the resulting vectors, we have to send in exclamation points in the positions corresponding to the columns of $\\mathbf{A}$ we want to recover:
 
 ```python
 >>> chr(32 + 1)

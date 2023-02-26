@@ -46,7 +46,7 @@ Later on in the program is the code responsible for handling our single oracle q
 ```
 
 So we get to send in a modulus, and we're given the remainder of dividing `target` by that modulus.
-Luckily for us, we know that `target` lies on the interval 1 <= target <= n, so if we send in any number greater than or equal to n, the remainder we're given will just be `target`, which we can then send in to get the flag.
+Luckily for us, we know that `target` lies on the interval 1 \<= target \<= n, so if we send in any number greater than or equal to n, the remainder we're given will just be `target`, which we can then send in to get the flag.
 
 You could honestly do that process by hand since it's not too involved, but here's the solve script I used anyways :)
 

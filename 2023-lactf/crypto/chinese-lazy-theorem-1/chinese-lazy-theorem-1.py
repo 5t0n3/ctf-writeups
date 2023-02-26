@@ -5,7 +5,7 @@ from Crypto.Random.random import randint
 
 p = getPrime(512)
 q = getPrime(512)
-n = p*q
+n = p * q
 
 target = randint(1, n)
 
@@ -14,7 +14,7 @@ used_oracle = False
 print(p)
 print(q)
 
-print("To quote Pete Bancini, \"I'm tired.\"")
+print('To quote Pete Bancini, "I\'m tired."')
 print("I'll answer one modulus question, that's it.")
 while True:
     print("What do you want?")
@@ -35,7 +35,7 @@ while True:
                 print()
             else:
                 used_oracle = True
-                print(target%modulus)
+                print(target % modulus)
                 print()
     elif response == "2":
         guess = input("Type your guess here: ")

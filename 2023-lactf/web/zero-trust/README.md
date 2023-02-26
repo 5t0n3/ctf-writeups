@@ -43,7 +43,7 @@ Let's consult the documentation for the [Node.js `crypto` module](https://nodejs
 
 > `decipher.setAuthTag(buffer[, encoding])`
 >
-> When using an authenticated encryption mode (`GCM`, `CCM`, `OCB`, and `chacha20-poly1305` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received authentication tag. **If no tag is provided, or if the cipher text has been tampered with, `decipher.final()` will throw,** indicating that the cipher text should be discarded due to failed authentication. [emphasis mine]
+> When using an authenticated encryption mode (`GCM`, `CCM`, `OCB`, and `chacha20-poly1305` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received authentication tag. **If no tag is provided, or if the cipher text has been tampered with, `decipher.final()` will throw,** indicating that the cipher text should be discarded due to failed authentication. \[emphasis mine\]
 
 We can see above that the `setAuthTag()` function is called before decrypting the data, but the `decipher.final()` function is never called.
 This allows attackers (including us :)) to tamper with the ciphertext, negating basically any benefits an authenticated encryption mode may bring.

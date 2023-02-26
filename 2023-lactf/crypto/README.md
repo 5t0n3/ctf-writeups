@@ -25,7 +25,7 @@ print("ct =", ct)
 ```
 
 So the phrase stored in `pt` is encrypted with a one-time pad (hence the challenge name) and printed as a hex string.
-Luckily for us, the xoring that occurs when encrypting with a one-time pad is reversible since we know the plaintext, so we can stick the ciphertext and plaintext into [CyberChef](https://gchq.github.io/CyberChef/#recipe=From_Hex('Auto')XOR(%7B'option':'Latin1','string':'Long%20ago,%20the%20four%20nations%20lived%20together%20in%20harmony%20...'%7D,'Standard',false)&input=MjAwZTBkMTM0NjFhMDU1YjRlNTkyYjAwNTQ1NDM5MDI0NjJkMTAwMDA0MmIwNDVmMWM0MDdmMTg1ODFiNTYxOTRjMTUwYzEzMDMwZjBhNTExMDU5MzYwNjExMWMzZTFmNWUzMDVlMTc0NTcxNDMxZQ) to get the flag: `lactf{b4by_h1t_m3_0ne_m0r3_t1m3}`.
+Luckily for us, the xoring that occurs when encrypting with a one-time pad is reversible since we know the plaintext, so we can stick the ciphertext and plaintext into [CyberChef](<https://gchq.github.io/CyberChef/#recipe=From_Hex('Auto')XOR(%7B'option':'Latin1','string':'Long%20ago,%20the%20four%20nations%20lived%20together%20in%20harmony%20...'%7D,'Standard',false)&input=MjAwZTBkMTM0NjFhMDU1YjRlNTkyYjAwNTQ1NDM5MDI0NjJkMTAwMDA0MmIwNDVmMWM0MDdmMTg1ODFiNTYxOTRjMTUwYzEzMDMwZjBhNTExMDU5MzYwNjExMWMzZTFmNWUzMDVlMTc0NTcxNDMxZQ>) to get the flag: `lactf{b4by_h1t_m3_0ne_m0r3_t1m3}`.
 
 ## crypto/rolling in the mud (434 solves/179 points)
 
@@ -65,7 +65,7 @@ Using the key from above, we can then decipher the flag, replacing characters as
 
 Let's check out the file we're provided:
 
-> κςκ ωπν αζπλ ιησι χνοςνθ μσγθσρ λσθ ζπι ιηγ δςρθι ψγρθπζ ςζ ηςθιπρω θνθψγμιγκ πδ νθςζε γζμρωψιςπζ? τγ ζγςιηγρ. κςκ ωπν αζπλ ιησι χνοςνθ μσγθσρ λσθ ψρπξσξοω δονγζι ςζ εργγα? τγ ζγςιηγρ. ς οςαγ ηπλ εργγα μησρσμιγρ οππα ιηπνεη, γυγζ ςδ ς μσζ'ι ργσκ ιηγτ. οσμιδ{ς_ενγθθ_νθςζε_τσζω_εργγα_μησρσμιγρθ_κςκζ'ι_θιπψ_ωπν._λγοο_ψοσωγκ_ς_τνθι_θσω.μπζερσιθ!}
+> κςκ ωπν αζπλ ιησι χνοςνθ μσγθσρ λσθ ζπι ιηγ δςρθι ψγρθπζ ςζ ηςθιπρω θνθψγμιγκ πδ νθςζε γζμρωψιςπζ? τγ ζγςιηγρ. κςκ ωπν αζπλ ιησι χνοςνθ μσγθσρ λσθ ψρπξσξοω δονγζι ςζ εργγα? τγ ζγςιηγρ. ς οςαγ ηπλ εργγα μησρσμιγρ οππα ιηπνεη, γυγζ ςδ ς μσζ'ι ργσκ ιηγτ. οσμιδ{ς_ενγθθ_νθςζε_τσζω_εργγα_μησρσμιγρθ_κςκζ'ι_θιπψ_ωπν.\_λγοο_ψοσωγκ_ς_τνθι_θσω.μπζερσιθ!}
 
 I can't imagine trying to pronounce that :)
 Anyways, given that the description refers to this as a monoalphagreek cipher, it's probably safe to assume that it's a monoalphabetic substitution cipher, which means that each greek letter only maps to one normal (?) letter, and vice versa.
@@ -74,7 +74,7 @@ This is as opposed to a polyalphabetic substitution cipher, where context can af
 With that in mind, we know that the flag format is `lactf{...}`, and there's a series of letters that looks suspiciously similar to that in the above Greek text.
 We can then substitute for those letters to give us the following:
 
-> κςκ ωπν αζπλ tηat χνlςνθ caγθaρ λaθ ζπt tηγ fςρθt ψγρθπζ ςζ ηςθtπρω θνθψγctγκ πf νθςζε γζcρωψtςπζ? τγ ζγςtηγρ. κςκ ωπν αζπλ tηat χνlςνθ caγθaρ λaθ ψρπξaξlω flνγζt ςζ εργγα? τγ ζγςtηγρ. ς lςαγ ηπλ εργγα cηaρactγρ lππα tηπνεη, γυγζ ςf ς caζ't ργaκ tηγτ. lactf{ς_ενγθθ_νθςζε_τaζω_εργγα_cηaρactγρθ_κςκζ't_θtπψ_ωπν._λγll_ψlaωγκ_ς_τνθt_θaω.cπζερatθ!}
+> κςκ ωπν αζπλ tηat χνlςνθ caγθaρ λaθ ζπt tηγ fςρθt ψγρθπζ ςζ ηςθtπρω θνθψγctγκ πf νθςζε γζcρωψtςπζ? τγ ζγςtηγρ. κςκ ωπν αζπλ tηat χνlςνθ caγθaρ λaθ ψρπξaξlω flνγζt ςζ εργγα? τγ ζγςtηγρ. ς lςαγ ηπλ εργγα cηaρactγρ lππα tηπνεη, γυγζ ςf ς caζ't ργaκ tηγτ. lactf{ς_ενγθθ_νθςζε_τaζω_εργγα_cηaρactγρθ_κςκζ't_θtπψ_ωπν.\_λγll_ψlaωγκ_ς_τνθt_θaω.cπζερatθ!}
 
 That gives us a couple more hints for potential substitutions:
 

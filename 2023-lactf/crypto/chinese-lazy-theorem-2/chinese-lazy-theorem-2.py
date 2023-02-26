@@ -5,7 +5,7 @@ from Crypto.Random.random import randint
 
 p = getPrime(512)
 q = getPrime(512)
-n = p*q*2*3*5
+n = p * q * 2 * 3 * 5
 
 target = randint(1, n)
 
@@ -37,7 +37,7 @@ while True:
                 print()
             else:
                 oracle_uses += 1
-                print(target%modulus)
+                print(target % modulus)
                 print()
     elif response == "2":
         for _ in range(30):
