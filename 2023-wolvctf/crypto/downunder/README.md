@@ -9,6 +9,8 @@
 
 Provided: [`source.zip`](source.zip)
 
+Summary: Small subgroup confinement attack on Diffie Hellman with some HMAC brute forcing and Chinese Remainder Theorem for good measure :)
+
 ## Solution
 
 The most interesting file from the extracted source is `key_exchange.py`, which appears to do a [Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) of sorts:
