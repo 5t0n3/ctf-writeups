@@ -74,10 +74,10 @@ Well, if you have an element $a$ of one of those subgroups with order $w$, raisi
 
 ```math
 \begin{align}
-a^b \mod p &= a^{kw+r}
-           &= a^{kw}a^r
-           &= (a^w)^ka^r
-           &= 1^ka^r
+a^b \mod p &= a^{kw+r} \
+           &= a^{kw}a^r \
+           &= (a^w)^ka^r \
+           &= 1^ka^r \
            &= a^r \mod p
 \end{align}
 ```
