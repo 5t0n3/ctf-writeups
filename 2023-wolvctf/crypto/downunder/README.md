@@ -51,7 +51,7 @@ We are given the full numbers (i.e. not just the scientific notation), but that'
 My first idea was to send 1 and -1 as `A` values to determine if the flag exponent was even or odd, since -1 to any even power is just 1, so the HMAC values generated as shown above would be the same in that case.
 As it turns out, the flag exponent is in fact even, which makes sense based on how the flag is converted to a number, assuming it ends in a `}` character.
 
-At this point I was a bit stumped, but when randomly lookup up stuff to find any leads I found a [writeup by Project Sekai](https://sekai.team/blog/wolvsec-ctf/cpa/) from last year's WolvSec CTF that seemed to be really similar.
+At this point I was a bit stumped, but randomly looking up stuff led me to a [writeup by Project Sekai](https://sekai.team/blog/wolvsec-ctf/cpa/) from last year's WolvSec CTF that seemed to be really similar.
 I'd highly recommend giving it a read if you have a chance (thanks again to @sahuang for explaining the challenge so well :D).
 
 It essentially boils down to a consequence of [Cauchy's Theorem](https://en.wikipedia.org/wiki/Cauchy%27s_theorem_(group_theory)), which implies that any group of composite order has subgroups with their orders being the prime factors of the order of the entire group (if that makes sense).
@@ -63,6 +63,7 @@ In the context of this challenge, $p-1$ consistently appears to have 7 small(ish
 
 ```python
 >>> from sympy import primefactors
+# real p value from the server
 >>> p = 2944391651859508220032914208161471056786614311862501680986963364297699599329788924893003846095489297754340082139509854389526154622496939661259152806710216023823737242149467908480946748733106681479664581152675420961752622839506627347334048941289384274114219119358191643637203
 >>> primefactors(p-1, limit=100000)
 [2, 38971, 41077, 42853, 48751, 62497, 62687]
@@ -72,7 +73,7 @@ Note that those aren't all of the prime factors of $p-1$; in this case, $p$ also
 
 As I mentioned above, Cauchy's Theorem guarantees subgroups of $\mathbb{Z}_p^\times$ (the multiplicative group of integers mod $p$) with orders equal to each of those factors.
 Now, how is that useful?
-Well, if you have an element $a$ of one of those subgroups with order $w$, raising it to the power of $b$ (the flag exponent) is the same as raising it to the power of $kw + r$, which simplifies like so:
+Well, if you have an element $a$ of one of those subgroups with order $w$, raising it to the power of $b$ (the flag exponent) is the same as raising it to the power of $kw + r$, where $0 \le r < w$, which simplifies like so:
 
 ```math
 \begin{align}
@@ -87,7 +88,7 @@ a^b \mod p &= a^{kw+r} \
 Notice that $r \equiv b \mod w$, so if we have enough of those residuals we can use the Chinese Remainder Theorem to recover the flag completely!
 We can find the specific residuals by brute forcing the resulting HMAC of that exponentiation, which is doable because the factors of $p-1$ (the group order) are relatively small, especially when compared to $p-1$ :)
 
-That still leaves the problem of finding elements of those subgroups, but luckily some more research yielded [this Cryptography Stack Exchange post](https://crypto.stackexchange.com/q/27584), which says that for a given generator of $\mathbb{Z}_p^\times$ and factor $w$ of its order, $g^{\frac{p-1}{w}}$ will lie in the subgroup of order $w$.
+That still leaves the problem of finding elements of those subgroups, but luckily some more research yielded [this Cryptography Stack Exchange post](https://crypto.stackexchange.com/q/27584), which says that for a given generator $g$ of $\mathbb{Z}_p^\times$ and factor $w$ of its order, $g^{\frac{p-1}{w}}$ will lie in the subgroup of order $w$.
 
 With all of that knowledge in hand, we can then recover the flag exponent and therefore the flag!
 You can check out my entire solve script [here](confine.py).
