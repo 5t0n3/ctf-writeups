@@ -1,4 +1,4 @@
-# crypto/downunder (497 points/12 solves*)
+# crypto/downunder (12 solves / 497 points*)
 
 (*solved after CTF ended)
 

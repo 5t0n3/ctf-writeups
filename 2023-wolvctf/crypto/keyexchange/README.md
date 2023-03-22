@@ -1,4 +1,4 @@
-# crypto/keyexchange (120 points/118 solves)
+# crypto/keyexchange (118 solves / 120 points)
 
 > Diffie-Hellman is secure right
 
