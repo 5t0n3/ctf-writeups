@@ -9,7 +9,7 @@
 
 Provided: [`source.zip`](source.zip)
 
-Summary: Small subgroup confinement attack on Diffie Hellman with some HMAC brute forcing and Chinese Remainder Theorem for good measure :)
+Summary: Small subgroup confinement attack on Diffie-Hellman with some HMAC brute forcing and Chinese Remainder Theorem for good measure :)
 
 ## Solution
 
@@ -63,13 +63,13 @@ In the context of this challenge, $p-1$ consistently appears to have 7 small(ish
 
 ```python
 >>> from sympy import primefactors
-# real p value from the server
+>>> # real p value from the server
 >>> p = 2944391651859508220032914208161471056786614311862501680986963364297699599329788924893003846095489297754340082139509854389526154622496939661259152806710216023823737242149467908480946748733106681479664581152675420961752622839506627347334048941289384274114219119358191643637203
 >>> primefactors(p-1, limit=100000)
 [2, 38971, 41077, 42853, 48751, 62497, 62687]
 ```
 
-Note that those aren't all of the prime factors of $p-1$; in this case, $p$ also has another composite factor on the order of $10^{246}$, but sympy wasn't having a fun time factoring it so we can ignore it for now :)
+Note that those aren't all of the prime factors of $p-1$; in this case, $p-1$ also has another composite factor on the order of $10^{246}$, but sympy wasn't having a fun time factoring it so we can ignore it for now :)
 
 As I mentioned above, Cauchy's Theorem guarantees subgroups of $\mathbb{Z}_p^\times$ (the multiplicative group of integers mod $p$) with orders equal to each of those factors.
 Now, how is that useful?
