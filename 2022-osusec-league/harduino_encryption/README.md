@@ -100,7 +100,7 @@ Based on how the xor operation works, bits 4 and 6 will be unaffected by the XOR
 
 Now for the four least significant bits:
 
-<div align="center".
+<div align="center">
 <img src="img/lsb-xor.png" alt="Schematic showing XOR process for least significant character bits">
 </div>
 
